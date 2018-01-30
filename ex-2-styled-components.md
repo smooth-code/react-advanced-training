@@ -122,7 +122,7 @@ const Header = styled.header`
   text-transform: uppercase;
 `
 
-const movies = class App extends Component {
+class App extends Component {
   render() {
     return (
       <div>
