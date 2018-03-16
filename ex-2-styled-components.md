@@ -16,7 +16,7 @@ Nous allons commencer par créer les composants nécessaires à l'affichage d'un
 * Créer un fichier `movies.json` avec la liste de films
 * Créer un dossier `src/components`
 * Créer un composant `MovieCard` qui affichera la carte d'un film
-* Créer un composant `MovieList` qui affichera une liste de film
+* Créer un composant `MovieList` qui affichera une liste de films
 * Modifier le composant `App` pour afficher la liste de films
 
 **Résultat attendu**
