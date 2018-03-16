@@ -6,8 +6,8 @@ Nous souhaitons faire un compte à rebours au chargement de la page d'accueil. P
 
 * Créer un composant `Countdown` acceptant trois propriétés :
 
-  * `render`, la fameuse render props appelé avec le `count` courant
-  * `delay`, le délais entre chaque tick
+  * `render`, la fameuse render props appelée avec le `count` courant
+  * `delay`, le délai entre chaque tick
   * `initialValue`, la valeur à laquelle le compte à rebours commence
 
 * Utiliser ce composant dans `Home` pour afficher un compte à rebours avant d'afficher les films
