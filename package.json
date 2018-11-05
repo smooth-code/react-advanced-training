@@ -25,5 +25,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "jest-styled-components": "^6.2.2",
+    "react-test-renderer": "^16.6.0"
+  }
 }

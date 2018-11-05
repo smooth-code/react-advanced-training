@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieVote should render vote 1`] = `
+Array [
+  "5.4",
+  " / 10 ",
+  .c0 {
+  font-size: 0.8em;
+}
+
+<span
+    className="c0"
+  >
+    (
+    2123
+     votes)
+  </span>,
+]
+`;
