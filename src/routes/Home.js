@@ -33,7 +33,7 @@ const Count = styled('div')`
 `
 
 const Home = ({ error, result }) => (
-  <Countdown initialValue={3} delay={500}>
+  <Countdown initialValue={0} delay={500}>
     {({ value }) => {
       if (value !== 0) return <Count key={value}>{value}</Count>
       if (error) return <div>Oups!</div>

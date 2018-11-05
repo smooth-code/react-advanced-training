@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { like, unlike } from '../redux/ActionCreators'
 import MovieVote from './MovieVote'
 
 const Container = styled('div')`
@@ -50,7 +52,15 @@ const Overview = styled('div')`
   font-size: 14px;
 `
 
-const MovieCard = ({ movie }) => (
+const Like = styled('div')`
+  color: ${p => (p.active ? `red` : 'rgba(0, 0, 0, 0)')};
+  font-size: 25px;
+  position: absolute;
+  right: 10px;
+  text-shadow: 0px 0px #fff;
+`
+
+const MovieCard = ({ movie, liked, onClickLike }) => (
   <Container bgImg={`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}>
     <InnerContainer>
       <Title>{movie.title}</Title>
@@ -59,7 +69,27 @@ const MovieCard = ({ movie }) => (
       </Vote>
       <Overview>{movie.overview}</Overview>
     </InnerContainer>
+    <Like active={liked} onClick={onClickLike}>
+      ❤️
+    </Like>
   </Container>
 )
 
-export default React.memo(MovieCard)
+export default connect(
+  ({ movieLikes }, { movie }) => ({
+    liked: movieLikes[movie.id],
+  }),
+  (dispatch, { movie }) => ({
+    onLike: () => dispatch(like(movie.id)),
+    onUnlike: () => dispatch(unlike(movie.id)),
+  }),
+  ({ liked }, { onLike, onUnlike }, ownProps) => ({
+    onClickLike(event) {
+      event.preventDefault()
+      if (liked) onUnlike()
+      else onLike()
+    },
+    liked,
+    ...ownProps,
+  }),
+)(React.memo(MovieCard))
