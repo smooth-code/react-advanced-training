@@ -28,12 +28,27 @@ const Header = styled.header`
   }
 `
 
+const Nav = styled('nav')`
+  margin: 10px;
+`
+
+const NavLink = styled(Link)`
+  color: white;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 const App = () => (
   <div>
     <GlobalStyle />
     <Header>
       <Link to="/">Smoothflix</Link>
     </Header>
+    <Nav>
+      <NavLink to="/about">About</NavLink>
+    </Nav>
     <ErrorBoundary>
       <Switch>
         <Route path="/movies/:movieId" component={MovieDetail} />

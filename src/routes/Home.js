@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
+import About from './About'
 import MovieList from '../components/MovieList'
 import MovieCard from '../components/MovieCard'
 
@@ -30,13 +31,16 @@ class RecommendedMovies extends React.Component {
     if (this.state.error) return <div>Oups!</div>
     if (this.state.result)
       return (
-        <MovieList>
-          {this.state.result.data.results.map(movie => (
-            <Link to={`/movies/${movie.id}`} key={movie.id}>
-              <MovieCard movie={movie} />
-            </Link>
-          ))}
-        </MovieList>
+        <>
+          <MovieList>
+            {this.state.result.data.results.map(movie => (
+              <Link to={`/movies/${movie.id}`} key={movie.id}>
+                <MovieCard movie={movie} />
+              </Link>
+            ))}
+          </MovieList>
+          <Route path="/about" component={About} />
+        </>
       )
     return <Loading>Loading...</Loading>
   }
