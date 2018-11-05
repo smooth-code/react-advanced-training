@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { globalStyle } from '@smooth-ui/core-sc'
-import RecommendedMovies from './components/RecommendedMovies'
+import { Route, Link } from 'react-router-dom'
+import Home from './routes/Home'
+import MovieDetail from './routes/MovieDetail'
 
 const GlobalStyle = createGlobalStyle`
   ${globalStyle()}
@@ -19,6 +21,10 @@ const Header = styled.header`
   color: #d32f27;
   padding: 20px;
   text-transform: uppercase;
+
+  a {
+    color: #d32f27;
+  }
 `
 
 class App extends Component {
@@ -26,8 +32,11 @@ class App extends Component {
     return (
       <div>
         <GlobalStyle />
-        <Header>Smoothflix</Header>
-        <RecommendedMovies />
+        <Header>
+          <Link to="/">Smoothflix</Link>
+        </Header>
+        <Route exact path="/" component={Home} />
+        <Route path="/movies/:movieId" component={MovieDetail} />
       </div>
     )
   }

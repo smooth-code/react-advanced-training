@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import MovieList from './MovieList'
-import MovieCard from './MovieCard'
+import { Link } from 'react-router-dom'
+import MovieList from '../components/MovieList'
+import MovieCard from '../components/MovieCard'
 
-const Loading = styled.div`
+const Loading = styled('div')`
   font-size: 20px;
   color: #888;
   margin: 20px;
@@ -31,7 +32,9 @@ class RecommendedMovies extends React.Component {
       return (
         <MovieList>
           {this.state.result.data.results.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
+            <Link to={`/movies/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} />
+            </Link>
           ))}
         </MovieList>
       )
