@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { globalStyle } from '@smooth-ui/core-sc'
-import { Route, Link } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
+import ErrorBoundary from './components/ErrorBoundary'
 import Home from './routes/Home'
 import MovieDetail from './routes/MovieDetail'
 
@@ -27,19 +28,19 @@ const Header = styled.header`
   }
 `
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <GlobalStyle />
-        <Header>
-          <Link to="/">Smoothflix</Link>
-        </Header>
-        <Route exact path="/" component={Home} />
+const App = () => (
+  <div>
+    <GlobalStyle />
+    <Header>
+      <Link to="/">Smoothflix</Link>
+    </Header>
+    <ErrorBoundary>
+      <Switch>
         <Route path="/movies/:movieId" component={MovieDetail} />
-      </div>
-    )
-  }
-}
+        <Route path="/" component={Home} />
+      </Switch>
+    </ErrorBoundary>
+  </div>
+)
 
 export default App
