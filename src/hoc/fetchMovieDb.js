@@ -1,12 +1,20 @@
 import React from 'react'
 import axios from 'axios'
 
+const Context = React.createContext()
+
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component'
 }
 
+export const FetchProvider = ({ apiKey, children }) => (
+  <Context.Provider value={{ apiKey }}>{children}</Context.Provider>
+)
+
 const fetchMovieDb = path => Component => {
   class MovieDbFetcher extends React.Component {
+    static contextType = Context
+
     state = { error: null, result: null, progress: true }
 
     async componentDidMount() {
@@ -14,7 +22,7 @@ const fetchMovieDb = path => Component => {
         const result = await axios.get(
           `https://api.themoviedb.org/3${
             typeof path === 'string' ? path : path(this.props)
-          }?api_key=c5742978852b8f695a61e22a33a8196c`,
+          }?api_key=${this.context.apiKey}`,
         )
         this.setState({ result, progress: false })
       } catch (error) {
