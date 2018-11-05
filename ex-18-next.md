@@ -4,9 +4,9 @@
 
 Nous souhaitons essayer [Next](https://github.com/zeit/next.js/).
 
-* Installer `next`
-* Créer un dossier `pages` et un composant dans `pages/index.js`
-* Lancer Next : `npx next`
+- Installer `next`
+- Créer un dossier `pages` et un composant dans `pages/index.js`
+- Lancer Next : `npx next`
 
 **Résultat attendu**
 

@@ -4,15 +4,15 @@
 
 Nous souhaitons mettre également les films dans Redux afin d'éviter les requêtes multiples. Nous allons stocker les requêtes dans le state dans un objet `fetchStates`, la clef sera le `path` et la valeur sera l'état : `{ progress, result, error }`.
 
-* Créer un nouveau `ActionType` : `FETCH_STATE`
-* Créer un nouveau `ActionCreator` : `fetchApi(path, apiKey)`, cette action sera responsable du fetching des données, elle dispatchera trois actions :
+- Créer un nouveau `ActionType` : `FETCH_STATE`
+- Créer un nouveau `ActionCreator` : `fetchApi(path, apiKey)`, cette action sera responsable du fetching des données, elle dispatchera trois actions :
 
-  * Une avant de lancer la requête : `{ type: FETCH_STATE, path, state: { progress: true } }`
-  * Une si la requête est en succès : `{ type: FETCH_STATE, path, state: { result } }`
-  * Une si la requête est en erreur : `{ type: FETCH_STATE, path, state: { error } }`
+  - Une avant de lancer la requête : `{ type: FETCH_STATE, path, state: { progress: true } }`
+  - Une si la requête est en succès : `{ type: FETCH_STATE, path, state: { result } }`
+  - Une si la requête est en erreur : `{ type: FETCH_STATE, path, state: { error } }`
 
-* Mettre à jour le store afin de gérer l'action `FETCH_STATE`
-* Modifier le hoc `fetchMovieDb` pour qu'il émette l'action `fetchApi()` et récupère les données depuis le store
+- Mettre à jour le store afin de gérer l'action `FETCH_STATE`
+- Modifier le hoc `fetchMovieDb` pour qu'il émette l'action `fetchApi()` et récupère les données depuis le store
 
 **Résultat attendu**
 

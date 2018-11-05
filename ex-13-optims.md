@@ -2,9 +2,9 @@
 
 ## Instructions
 
-Nous souhaitons optimiser notre application pour qu'elle soit toujours fluide. Pour cela nous allons utiliser le `PureComponent`.
+Nous souhaitons optimiser notre application pour qu'elle soit toujours fluide. Pour cela nous allons utiliser `React.memo`.
 
-* Transformer `MovieCard` en `PureComponent`
+- Transformer `MovieCard` en _Memoized Component_
 
 **Résultat attendu**
 
@@ -16,10 +16,8 @@ Aucun changement, votre application est plus fluide.
 // Composant Home modifié afin de stresser l'application
 // Toutes les 10ms, la liste est re-rendue
 const Home = ({ error, result }) => (
-  <Countdown
-    initialValue={1000}
-    delay={10}
-    render={({ value }) => {
+  <Countdown initialValue={1000} delay={10}>
+    {({ value }) => {
       // if (value !== 0) return <Count key={value}>{value}</Count>
       if (error) return <div>Oups!</div>
       if (result)
@@ -38,6 +36,6 @@ const Home = ({ error, result }) => (
         )
       return <Loading>Loading...</Loading>
     }}
-  />
+  </Countdown>
 )
 ```

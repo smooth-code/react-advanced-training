@@ -4,9 +4,9 @@
 
 Nous souhaitons mettre en place l'extension Redux afin de visualiser notre state plus facilement et pouvoir voyager dans le temps.
 
-* Installer l'extension [Redux Devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
-* Ajouter le code nécessaire dans `store.js` pour connecter Redux à l'extension
-* Visualiser le state Redux dans l'extension
+- Installer l'extension [Redux Devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- Ajouter le code nécessaire dans `store.js` pour connecter Redux à l'extension
+- Visualiser le state Redux dans l'extension
 
 **Résultat attendu**
 

@@ -4,9 +4,9 @@
 
 Nous souhaitons améliorer la gestion des erreurs au sein de notre application.
 
-* Créer un composant `ErrorBoundary`
-* Placer le composant à la racine de `App`
-* Faire un `throw new Error('Oups')` dans `Home` afin de vérifier que l'erreur est bien interceptée
+- Créer un composant `ErrorBoundary`
+- Placer le composant à la racine de `App`
+- Faire un `throw new Error('Oups')` dans `Home` afin de vérifier que l'erreur est bien interceptée
 
 **Résultat attendu**
 
@@ -26,7 +26,9 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.hasError) return <div>Something went wrong.</div>
+    if (this.state.hasError) {
+      return <div>Something went wrong.</div>
+    }
     return this.props.children
   }
 }

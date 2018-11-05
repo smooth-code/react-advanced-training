@@ -6,18 +6,12 @@ Nous souhaitons réaliser une application permettant de découvrir des films et 
 
 Nous allons commencer par créer les composants nécessaires à l'affichage d'une liste de films.
 
-* Installer `styled-components`
-* Ajouter bootstrap dans `public/index.html` :
-
-```html
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-```
-
-* Créer un fichier `movies.json` avec la liste de films
-* Créer un dossier `src/components`
-* Créer un composant `MovieCard` qui affichera la carte d'un film
-* Créer un composant `MovieList` qui affichera une liste de films
-* Modifier le composant `App` pour afficher la liste de films
+- Installer `styled-components @smooth-ui/core-sc`
+- Créer un fichier `src/movies.json` avec la liste de films
+- Créer un dossier `src/components`
+- Créer un composant `MovieCard` qui affichera la carte d'un film
+- Créer un composant `MovieList` qui affichera une liste de films
+- Modifier le composant `App` pour afficher la liste de films
 
 **Résultat attendu**
 
@@ -40,8 +34,7 @@ Nous allons commencer par créer les composants nécessaires à l'affichage d'un
     "genre_ids": [28, 9648, 878, 53],
     "backdrop_path": "/lkOZcsXcOLZYeJ2YxJd3vSldvU4.jpg",
     "adult": false,
-    "overview":
-      "Set in a post-apocalyptic world, young Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow “runners” for a shot at escape.",
+    "overview": "Set in a post-apocalyptic world, young Thomas is deposited in a community of boys after his memory is erased, soon learning they're all trapped in a maze that will require him to join forces with fellow “runners” for a shot at escape.",
     "release_date": "2014-09-10"
   },
   {
@@ -57,8 +50,7 @@ Nous allons commencer par créer les composants nécessaires à l'affichage d'un
     "genre_ids": [18, 27, 53],
     "backdrop_path": "/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
     "adult": false,
-    "overview":
-      "In a small town in Maine, seven children known as The Losers Club come face to face with life problems, bullies and a monster that takes the shape of a clown called Pennywise.",
+    "overview": "In a small town in Maine, seven children known as The Losers Club come face to face with life problems, bullies and a monster that takes the shape of a clown called Pennywise.",
     "release_date": "2017-09-05"
   },
   {
@@ -74,8 +66,7 @@ Nous allons commencer par créer les composants nécessaires à l'affichage d'un
     "genre_ids": [28, 12, 35, 10751],
     "backdrop_path": "/cpz070zEKbPGXzCWuQsNt42PqXY.jpg",
     "adult": false,
-    "overview":
-      "The tables are turned as four teenagers are sucked into Jumanji's world - pitted against rhinos, black mambas and an endless variety of jungle traps and puzzles. To survive, they'll play as characters from the game.",
+    "overview": "The tables are turned as four teenagers are sucked into Jumanji's world - pitted against rhinos, black mambas and an endless variety of jungle traps and puzzles. To survive, they'll play as characters from the game.",
     "release_date": "2017-12-08"
   },
   {
@@ -91,8 +82,7 @@ Nous allons commencer par créer les composants nécessaires à l'affichage d'un
     "genre_ids": [28, 53],
     "backdrop_path": "/umC04Cozevu8nn3JTDJ1pc7PVTn.jpg",
     "adult": false,
-    "overview":
-      "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.",
+    "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.",
     "release_date": "2014-10-22"
   }
 ]
@@ -101,12 +91,15 @@ Nous allons commencer par créer les composants nécessaires à l'affichage d'un
 ```js
 // App.js
 import React, { Component } from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+import { globalStyle } from '@smooth-ui/core-sc'
 import movies from './movies.json'
 import MovieList from './components/MovieList'
 import MovieCard from './components/MovieCard'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
+  ${globalStyle()}
+
   body {
     background-color: #141414;
   }
@@ -126,6 +119,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <GlobalStyle />
         <Header>Smoothflix</Header>
         <MovieList>{/* TODO */}</MovieList>
       </div>
@@ -141,7 +135,7 @@ export default App
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Container = styled('div')`
   background-color: rgba(0, 0, 0, 0.2);
   background-image: url('${props => props.bgImg}');
   background-repeat: no-repeat;
@@ -159,7 +153,7 @@ const Container = styled.div`
   }
 `
 
-const InnerContainer = styled.div`
+const InnerContainer = styled('div')`
   position: absolute;
   padding: 10px;
   top: 0;
@@ -174,18 +168,18 @@ const InnerContainer = styled.div`
   }
 `
 
-const Title = styled.div`
+const Title = styled('div')`
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 8px;
 `
-const Vote = styled.div`
+const Vote = styled('div')`
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
 `
 
-const Overview = styled.div`
+const Overview = styled('div')`
   font-size: 14px;
 `
 
@@ -205,15 +199,16 @@ export default MovieCard
 ```js
 // MovieList.js
 import React from 'react'
+import { Row, Col } from '@smooth-ui/core-sc'
 
 const MovieList = ({ children }) => (
-  <div className="row">
+  <Row>
     {React.Children.map(children, (child, index) => (
-      <div className="col-md-4" key={index}>
+      <Col md={4} key={index}>
         {child}
-      </div>
+      </Col>
     ))}
-  </div>
+  </Row>
 )
 
 export default MovieList

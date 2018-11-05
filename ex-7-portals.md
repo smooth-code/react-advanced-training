@@ -4,13 +4,13 @@
 
 Nous souhaitons ajouter une page "A propos", cette page devra s'afficher par dessus par liste de films, comme une Popin / Modale.
 
-* Dans `App.js` :
+- Dans `App.js` :
 
-  * Utiliser un `Switch` pour se passer du `exact`
-  * Ajouter une barre de navigation sous le header (voir aide)
+  - Utiliser un `Switch` pour se passer du `exact`
+  - Ajouter une barre de navigation sous le header (voir aide)
 
-* Dans `Home`, ajouter une route avec un path "/about"
-* En s'inspirant de l'aide, créer un composant `About` qui affichera un message
+- Dans `Home`, ajouter une route avec un path "/about"
+- En s'inspirant de l'aide, créer un composant `About` qui affichera un message
 
 **Résultat attendu**
 
@@ -47,15 +47,19 @@ const Modal = styled.div`
 `
 
 class About extends React.Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props)
+
     this.container = document.createElement('div')
     document.body.appendChild(this.container)
+
     // Block scroll
     document.body.style.overflow = 'hidden'
   }
 
   componentWillUnmount() {
     document.body.removeChild(this.container)
+
     // Restore scroll
     document.body.style.overflow = 'visible'
   }
@@ -72,11 +76,7 @@ export default About
 
 ```js
 // Navigation
-<ul className="nav">
-  <li className="nav-item">
-    <Link to="/about" className="nav-link">
-      About
-    </Link>
-  </li>
-</ul>
+<nav>
+  <Link to="/about">About</Link>
+</nav>
 ```

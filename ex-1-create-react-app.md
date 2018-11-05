@@ -4,8 +4,8 @@
 
 Nous allons initialiser un nouveau projet React à partir de `create-react-app`.
 
-* Lancer la commande `npx create-react-app .`
-* Lancer la commande `npm start`
+- Lancer la commande `npx create-react-app .`
+- Lancer la commande `npm start`
 
 **Résultat attendu**
 

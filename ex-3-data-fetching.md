@@ -4,15 +4,15 @@
 
 Maintenant que nous avons une interface fonctionnelle, nous souhaitons récupérer les données à partir de l'API de [themoviedb.org](https://developers.themoviedb.org/3/discover/movie-discover).
 
-* Installer `axios`
-* Créer un composant `RecommendedMovies`
-  * Pendant le chargement des films un message "Loading..." sera affiché
-  * On affichera une erreur si le chargement échoue
-  * Si tout se passe bien on affichera la liste des films
+- Installer `axios`
+- Créer un composant `RecommendedMovies`
+  - Pendant le chargement des films un message "Loading..." sera affiché
+  - On affichera une erreur si le chargement échoue
+  - Si tout se passe bien on affichera la liste des films
 
 URL de l'API : `https://api.themoviedb.org/3/discover/movie?api_key=c5742978852b8f695a61e22a33a8196c`
 
-* Afficher le composant `RecommendedMovies` dans `App`
+- Afficher le composant `RecommendedMovies` dans `App`
 
 **Résultat attendu**
 
@@ -26,12 +26,12 @@ import React from 'react'
 import axios from 'axios'
 
 class Users extends React.Component {
-  state = { error: null, data: null }
+  state = { error: null, result: null }
 
-  async componentWillMount() {
+  async componentDidMount() {
     try {
-      const data = await axios.get('/characters.json')
-      this.setState({ data })
+      const result = await axios.get('/characters.json')
+      this.setState({ result })
     } catch (error) {
       this.setState({ error })
     }
@@ -39,10 +39,12 @@ class Users extends React.Component {
 
   render() {
     if (this.state.error) return <div>Oups!</div>
-    if (this.state.data)
+    if (this.state.result)
       return (
         <div>
-          {this.state.data.map(user => <div key={user.id}>{user.name}</div>)}
+          {this.state.result.map(user => (
+            <div key={user.id}>{user.name}</div>
+          ))}
         </div>
       )
     return <div>Loading...</div>

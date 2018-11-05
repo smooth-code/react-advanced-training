@@ -4,11 +4,11 @@
 
 Nous souhaitons connecter notre store Redux à React afin d'ajouter / supprimer des favoris.
 
-* Désactiver le countdown (démarrer à 0)
-* Installer `react-redux`
-* Provider le store dans `index.js`
-* Ajouter un composant `Like` à votre `MovieCard` qui réagira à une propriété `active`, il changera de couleur par exemple
-* Connecter `MovieCard` à votre store Redux
+- Désactiver le countdown (démarrer à 0)
+- Installer `react-redux`
+- Provider le store dans `index.js`
+- Ajouter un composant `Like` à votre `MovieCard` qui réagira à une propriété `active`, il changera de couleur par exemple
+- Connecter `MovieCard` à votre store Redux
 
 **Résultat attendu**
 
@@ -31,8 +31,8 @@ ReactDOM.render(
 
 ```js
 // Exemple de composant Like
-const Like = styled.div`
-  color: ${props => (props.active ? `red` : 'rgba(0, 0, 0, 0)')};
+const Like = styled('div')`
+  color: ${p => (p.active ? `red` : 'rgba(0, 0, 0, 0)')};
   font-size: 25px;
   position: absolute;
   right: 10px;

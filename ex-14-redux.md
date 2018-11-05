@@ -4,17 +4,17 @@
 
 Nous souhaitons ajouter Redux à notre application afin d'y stocker une liste de favoris qui sera centralisée dans toute l'application.
 
-* Installer `redux`
-* Créer un fichier `redux/ActionTypes.js` qui exposera les types action
+- Installer `redux`
+- Créer un fichier `redux/ActionTypes.js` qui exposera les types action
 
-  * Ajouter deux types d'actions : "LIKE", "UNLIKE"
+  - Ajouter deux types d'actions : "LIKE", "UNLIKE"
 
-* Créer un fichier `redux/ActionCreators.js` qui exposera les actions creator
+- Créer un fichier `redux/ActionCreators.js` qui exposera les actions creator
 
-  * Ajouter deux créateurs d'action : `like(movieId)` et `unlike(movieId)`
+  - Ajouter deux créateurs d'action : `like(movieId)` et `unlike(movieId)`
 
-* Créer un fichier `redux/store.js` qui exposera le store Redux (voir aide)
-* Faire en sorte que les tests passent `redux/store.test.js` (voir aide)
+- Créer un fichier `redux/store.js` qui exposera le store Redux (voir aide)
+- Faire en sorte que les tests passent `redux/store.test.js` (voir aide)
 
 **Résultat attendu**
 

@@ -4,12 +4,12 @@
 
 Nous souhaitons tester notre application à l'aide de [Enzyme](https://github.com/airbnb/enzyme).
 
-* Installer `enzyme` et `enzyme-adapter-react-16`
-* Configurer Enzyme dans `setupTests.js`
-* Tester `MovieCard` avec enzyme :
-  * Vérifier qu'il affiche le `title` du film
-  * Vérifier qu'il affiche le `overview` du film
-  * Vérifier qu'il contient un composant `MovieVote` avec une propriété `movie`
+- Installer `enzyme` et `enzyme-adapter-react-16`
+- Configurer Enzyme dans `setupTests.js`
+- Tester `MovieCard` avec enzyme :
+  - Vérifier qu'il affiche le `title` du film
+  - Vérifier qu'il affiche le `overview` du film
+  - Vérifier qu'il contient un composant `MovieVote` avec une propriété `movie`
 
 **Résultat attendu**
 
