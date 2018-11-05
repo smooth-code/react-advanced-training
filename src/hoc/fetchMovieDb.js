@@ -1,5 +1,6 @@
 import React from 'react'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { fetchApi } from '../redux/ActionCreators'
 
 const Context = React.createContext()
 
@@ -18,24 +19,31 @@ const fetchMovieDb = path => Component => {
     state = { error: null, result: null, progress: true }
 
     async componentDidMount() {
-      try {
-        const result = await axios.get(
-          `https://api.themoviedb.org/3${
-            typeof path === 'string' ? path : path(this.props)
-          }?api_key=${this.context.apiKey}`,
-        )
-        this.setState({ result, progress: false })
-      } catch (error) {
-        this.setState({ error, progress: false })
-      }
+      this.props.onFetchApi(this.context.apiKey)
     }
 
     render() {
-      return <Component {...this.props} {...this.state} />
+      const { fetchState, ...props } = this.props
+      return <Component {...props} {...fetchState} />
     }
   }
+
   MovieDbFetcher.displayName = `fetchMovieDb(${getDisplayName(Component)})`
-  return MovieDbFetcher
+  return connect(
+    (state, ownProps) => {
+      const resolvedPath = typeof path === 'function' ? path(ownProps) : path
+      return {
+        fetchState: state.fetchStates[resolvedPath] || { progress: true },
+        resolvedPath,
+      }
+    },
+    null,
+    ({ resolvedPath, fetchState }, { dispatch }, ownProps) => ({
+      onFetchApi: apiKey => dispatch(fetchApi(resolvedPath, apiKey)),
+      fetchState,
+      ...ownProps,
+    }),
+  )(MovieDbFetcher)
 }
 
 export default fetchMovieDb

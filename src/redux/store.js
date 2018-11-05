@@ -1,7 +1,8 @@
-import { createStore } from 'redux'
-import { LIKE, UNLIKE } from './ActionTypes'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import { LIKE, UNLIKE, FETCH_STATE } from './ActionTypes'
 
-export const initialState = { movieLikes: {} }
+export const initialState = { movieLikes: {}, fetchStates: {} }
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -15,6 +16,14 @@ export const reducer = (state, action) => {
         ...state,
         movieLikes: { ...state.movieLikes, [action.movieId]: false },
       }
+    case FETCH_STATE:
+      return {
+        ...state,
+        fetchStates: {
+          ...state.fetchStates,
+          [action.path]: action.state,
+        },
+      }
     default:
       return state
   }
@@ -23,5 +32,10 @@ export const reducer = (state, action) => {
 export default createStore(
   reducer,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__
+      ? window.__REDUX_DEVTOOLS_EXTENSION__()
+      : f => f,
+  ),
 )
