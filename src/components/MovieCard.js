@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import MovieVote from './MovieVote'
 
 const Container = styled('div')`
   background-color: rgba(0, 0, 0, 0.2);
@@ -53,7 +54,9 @@ const MovieCard = ({ movie }) => (
   <Container bgImg={`http://image.tmdb.org/t/p/w780/${movie.backdrop_path}`}>
     <InnerContainer>
       <Title>{movie.title}</Title>
-      <Vote>{movie.vote_average} / 10</Vote>
+      <Vote>
+        <MovieVote movie={movie} />
+      </Vote>
       <Overview>{movie.overview}</Overview>
     </InnerContainer>
   </Container>
