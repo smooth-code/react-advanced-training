@@ -62,4 +62,4 @@ const MovieCard = ({ movie }) => (
   </Container>
 )
 
-export default MovieCard
+export default React.memo(MovieCard)
