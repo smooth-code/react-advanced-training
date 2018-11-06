@@ -3,7 +3,7 @@
 ## Ressources
 
 * [Exercices sur GitHub](https://github.com/smooth-code/react-advanced-training)
-* [Support de cours](https://goo.gl/LqbeZG)
+* [Support de cours](https://goo.gl/ZtUCfC)
 
 ## Démarrer les exercices
 
